@@ -1,0 +1,30 @@
+.project-blurb-container {
+	position: absolute;
+	left:0;
+	right:0;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.project-blurb {
+	height: 150px;
+	width: 320px;
+	background: rgba(255,255,255,0.96);
+	transform: translateY(-60%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 6px;
+}
+
+
+.project-blurb-title {
+	font-size: 1.7rem;
+}
+
+.project-blurb-category {
+	font-size: 1rem;
+	text-decoration: italic;
+}
