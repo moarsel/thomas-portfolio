@@ -1,5 +1,4 @@
 .project-blurb-container {
-	position: absolute;
 	left:0;
 	right:0;
 	display:flex;
@@ -27,4 +26,16 @@
 .project-blurb-category {
 	font-size: 1rem;
 	text-decoration: italic;
+}
+
+.Project::after {
+	content: ' ';
+	transform: rotate(-3deg);
+	transform-origin: 3% 0;
+	top: 0;
+	left: -25%;
+	z-index: -1;
+	width: 150%;
+	height: 75%;
+	background: inherit;
 }
