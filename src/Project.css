@@ -8,13 +8,14 @@
 
 .project-blurb {
 	height: 150px;
-	width: 320px;
+	min-width: 320px;
+	max-width: 640px;
 	background: rgba(255,255,255,0.96);
 	transform: translateY(-60%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: row;
 	border-radius: 6px;
 	box-shadow: -2px 0 20px 4px RGBA(0,0,0,0.3);
 }
@@ -29,10 +30,21 @@
 	text-decoration: italic;
 }
 
+.project-blurb-text {
+	text-align:left;
+	padding: 2rem 3rem 2rem 0;
+}
+
+.play-button {
+	margin: 2rem;
+}
+
 .Project {
 	position: relative;
 }
 
-.video {
+.previewImage {
+	width: 60vw;
+	min-width: 320px;
 	box-shadow: 0 10px 30px 1px RGBA(0,0,0,0.3);
 }

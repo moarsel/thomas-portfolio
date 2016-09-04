@@ -19,9 +19,9 @@ class App extends Component {
           </header>
         </div>
         <div className="slope-container">
-          <Project theme="#7db585" previewImage={duncanPalmer} title="The first one" category="Opera" description="yep yep yep"  movieSrc="https://player.vimeo.com/video/148242729"></Project>
-          <Project theme="#000AAA" previewImage={takeStairs} title="One upon a time" movieSrc="https://player.vimeo.com/video/148242729"></Project>
-          <Project theme="#7db585" previewImage={wantToHaveTo} title="The first one" category="Rock" description="yep yep yep"  movieSrc="https://player.vimeo.com/video/148242729"></Project>
+          <Project theme="#005962" previewImage={duncanPalmer} title="Drawing Duncan Palmer" category="Short Film" description="yep yep yep"  movieSrc="https://player.vimeo.com/video/148242729"></Project>
+          <Project theme="#482935" previewImage={takeStairs} title="Take the Elevator" category="Experimental" movieSrc="https://player.vimeo.com/video/148242729"></Project>
+          <Project theme="#fad49e" previewImage={wantToHaveTo} title="If you want to, you have to" category="Orchestra" description="yep yep yep"  movieSrc="https://player.vimeo.com/video/148242729"></Project>
         </div>
           <p className="contact-me">
             Lets collaborate
