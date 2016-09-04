@@ -1,6 +1,7 @@
 {
   "name": "portfolio-react",
   "version": "0.0.1",
+  "homepage": "http://moarsel.github.io/thomas-portfolio",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.2.3"
