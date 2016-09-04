@@ -16,6 +16,7 @@
 	align-items: center;
 	flex-direction: column;
 	border-radius: 6px;
+	box-shadow: -2px 0 20px 4px RGBA(0,0,0,0.3);
 }
 
 
@@ -28,14 +29,10 @@
 	text-decoration: italic;
 }
 
-.Project::after {
-	content: ' ';
-	transform: rotate(-3deg);
-	transform-origin: 3% 0;
-	top: 0;
-	left: -25%;
-	z-index: -1;
-	width: 150%;
-	height: 75%;
-	background: inherit;
+.Project {
+	position: relative;
+}
+
+.video {
+	box-shadow: 0 10px 30px 1px RGBA(0,0,0,0.3);
 }

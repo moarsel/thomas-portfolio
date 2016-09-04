@@ -1,6 +1,7 @@
 
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .App-header {
@@ -10,6 +11,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1;
+  position: relative;
 }
 
 .card-intro {
@@ -21,6 +24,7 @@
   padding: 4em;
   min-height:12em;
   background-color: white;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,24 +64,3 @@
   }
 }
 
-
-
-.slope-container {
-  overflow:hidden;
-}
-
-.se-slope {
-  margin: 0 -50px;
-  transform-origin: left center;
-}
-.se-slope:nth-child(odd) {
-  background: #000;
-  transform: rotate(5deg);
-  margin-top: -100px;
-  box-shadow: 0px -1px 3px rgba(0,0,0,0.4);
-}
-.se-slope:nth-child(even) {
-  background: #e90089;
-  transform: rotate(-5deg);
-  box-shadow: 0px 2px 3px rgba(0,0,0,0.4) inset;
-}
