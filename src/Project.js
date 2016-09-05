@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
 import playButton from './images/play-button.svg';
+import wantTo from './videos/ifyouwantto.mp4';
 import './Project.css';
 
 class Project extends Component {
 
+  constructor() {
+    super();
+    this.handleScroll = this.handleScroll.bind(this)
+    this.state = {shouldPlay: 0}
+  };
 
+  handleScroll(e) {
+    let projectVideo = this.refs.projectVideo;
+    let projectBlurbRectangle = this.refs.projectBlurb.getBoundingClientRect();
+    let isVisible = (projectBlurbRectangle.top < window.innerHeight) && (projectBlurbRectangle.bottom > 0);
+    // isVisible = elementTop < window.innerHeight && elementBottom >= 0
+
+    if (isVisible) {
+      console.log(this.props.title, 'visible now')
+      projectVideo.play();
+    } else {
+      console.log(this.props.title, 'not visible now')
+      projectVideo.pause();
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
 
   render() {
 
@@ -45,16 +73,13 @@ class Project extends Component {
 
     return (
       <div className="Project">
-        <div style={divStyle}>
-          <img className="previewImage" src={this.props.previewImage} alt={"Preview screenshot of " + this.props.title} />
-          <iframe 
-            className="video"
-            style={featureStyle} 
-            src={this.props.movieSrc +"?color=ffffff&title=0&byline=0&portrait=0"} 
-            width="80%" 
-            height="90%" frameBorder="0" hidden>
-          </iframe>
-          <div className="project-blurb-container" style={featureStyle}>
+        <div ref="projectBlurb" style={divStyle}>
+          <video ref="projectVideo" className="previewImage" onCanPlay={this.videoCanPlay} src={wantTo} poster={this.props.previewImage}>
+            Sorry, your browser doesn't support embedded videos, 
+            but don't worry, you can <a href={wantTo}>download it</a>
+            and watch it with your favorite video player!
+          </video>
+          <div  className="project-blurb-container" style={featureStyle}>
             <div className="project-blurb">
               <img className="play-button" src={playButton} alt="play button"/>
               <div className="project-blurb-text">
