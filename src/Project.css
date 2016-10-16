@@ -1,25 +1,51 @@
 .project-blurb-container {
-	left:0;
-	right:0;
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+	position: relative;
+    z-index: 2;
+    min-width: 320px;
+    width: 40vw;
+	margin: auto;
+	background: rgba(255,255,255,0.96);
+	transform: translateY(-60%);
+	border-radius: 6px;
+	box-shadow: -2px 0 20px 4px RGBA(0,0,0,0.3);
+	transition: all 0.1s ease-in-out;
 }
+
+.projectOpen .project-blurb-container {
+	width: 90vw;
+	transform: translateY(-10%);
+}
+
 
 .project-blurb {
 	height: 150px;
-	min-width: 320px;
-	max-width: 640px;
-	background: rgba(255,255,255,0.96);
-	transform: translateY(-60%);
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
-	border-radius: 6px;
-	box-shadow: -2px 0 20px 4px RGBA(0,0,0,0.3);
 }
 
+/*@media only screen and (max-width: 500px) {
+  .project-blurb {
+    transform: scale(0.8);
+    min-width: 640px;
+    transform-origin: 50% -120%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .project-blurb {
+    transform: scale(0.65);
+    min-width: 520px;
+    transform-origin: 50% -150%;
+  }
+}
+*/
 
 .project-blurb-title {
 	font-size: 1.7rem;
@@ -27,7 +53,7 @@
 
 .project-blurb-category {
 	font-size: 1rem;
-	text-decoration: italic;
+	font-style: italic;
 }
 
 .project-blurb-text {
@@ -37,14 +63,68 @@
 
 .play-button {
 	margin: 2rem;
+  	opacity: 1;
 }
 
-.Project {
+.projectOpen .play-button {
+	opacity: 0;
+	height: 0;
+	width: 0;
+	transition: all 0.1s;
+}
+
+.projectClosed .play-button {
+	opacity: 1;
+	transition: all 0.1s;
+}
+
+
+.projectOpen {
+	position: relative;
+	height: 100%;
+	z-index: 5;
+}
+
+.projectOpen .projectContainer {
+	height: 100%;
+}
+
+.projectOpen .description {
+	display: block;
+	opacity: 1;
+	height: 200px;
+	margin: 4rem;
+	transition: all 2s ease-in;
+}
+
+.projectClosed {
 	position: relative;
 }
 
-.previewImage {
+.projectClosed .projectContainer {
+      height: 95vh;
+      min-height: 30rem;
+      max-height: 50rem;
+      padding: 0rem 2rem 5rem 2rem;
+      width: 100vw;
+      position: relative;
+}
+
+.projectClosed .description {
+	opacity: 0;
+	height: 0;
+}
+
+
+.videoElement {
 	width: 60vw;
 	min-width: 320px;
 	box-shadow: 0 10px 30px 1px RGBA(0,0,0,0.3);
+}
+
+.projectOpen .videoElement {
+	width: 100vw;
+    min-height: 20rem;
+    max-height: 40rem;
+    transition: 400ms ease-in-out;
 }
