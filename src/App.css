@@ -2,36 +2,26 @@
 .App {
   text-align: center;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-header {
   background-color: #222;
-  padding: 20px;
+  background-image: url('images/thomas-image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   z-index: -1;
   position: relative;
 }
 
-.card-intro {
-  margin-left:auto;
-  margin-right: auto;
-  width: calc(100vw - 25vw);
-  min-height: 50vh;
-  height: 50vh;
-  padding: 4em;
-  min-height:12em;
-  background-color: white;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .card-name {
-  color: #333333;
+  color: #FAFAFA;
   font-size: 8vw;
   line-height:1.2;
   margin: 0;
@@ -40,13 +30,12 @@
 .card-byline {
   font-size: 3vw;
   line-height:1.5;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
-  .card-intro {
-    padding: 2em;
-    height: 70vh;
-  }
   .card-name {
     font-size: 40px;
   }

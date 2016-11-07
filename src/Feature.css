@@ -1,0 +1,57 @@
+.featureContainer {
+	width: 50vw;
+	margin: 10rem auto 15rem;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .featureContainer {
+    width: 80vw;
+  }
+}
+
+.feature-text {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin: 2rem 0;
+}
+
+.feature {
+	margin: 2.4rem 0;
+	padding: 0 2rem;
+	transform: translate3d(0,-125px,0);
+    transition: transform 300ms;
+}
+
+.projectOpen .feature {
+	transform: translate3d(0,0,0);
+}
+
+.feature-title {
+	font-size: 1.6rem;
+	margin-right: auto;
+	text-align: left;
+}
+
+.feature-category {
+	font-size: 1.2rem;
+}
+
+.feature-description {
+	text-align: left;
+}
+
+.videoElement {
+	width: 100%;
+	opacity: 0.8;
+	transition: opacity 300ms;
+	transition: width 500ms;
+	transition-delay: 500ms;
+}
+.projectOpen .videoElement {
+	opacity: 1;
+	width: 80vw;
+}
