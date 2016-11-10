@@ -20,16 +20,26 @@ class Feature extends Component {
 
   handleScroll(e) {
     let projectVideo = this.refs.projectVideo;
-    let featureBlurbRectangle = this.refs.featureBlurb.getBoundingClientRect();
-    let isVisible = (featureBlurbRectangle.top < window.innerHeight) && (featureBlurbRectangle.bottom > 0);
+    let featureBounds = this.refs.featureBlurb.getBoundingClientRect();
+    let isVisible = (featureBounds.top + 200 < window.innerHeight) && (featureBounds.bottom - 540 > 0);
+    let featureCenter = featureBounds.top - featureBounds.top / 2;
+    featureCenter *= Math.sign(featureCenter);
+    featureCenter = 1 - featureCenter / 150;
+    console.log(featureCenter);
 
-    if (isVisible) {
+    // Math.floor(Math.abs(x));
+
+    // cool effect
+    // projectVideo.currentTime = featureCenter * 10;
+
+
+    
+
+
+    if (isVisible && !this.state.isOpen) {
       projectVideo.play();
-    } else if (!isVisible){
-      this.setState({isOpen: false})
-      projectVideo.pause();
-      projectVideo.volume = 0;
-      projectVideo.controls = false;
+    } else if (!isVisible && !this.state.isOpen){
+      this.closeFeature();
     }
   };
 
@@ -43,13 +53,31 @@ class Feature extends Component {
     this.setState({isOpen: true});
     projectVideo.pause();
     projectVideo.volume = 1;
-    projectVideo.controls = true;
     projectVideo.play();
     projectVideo.currentTime = 0;
+
+    window.scroll({
+      top: projectVideo.offsetTop - 25,
+      behavior: 'smooth'
+    });
+
+    setTimeout(function(){
+      projectVideo.controls = true;
+    }, 1200);
   }
 
   closeFeature(){
+      let projectVideo = this.refs.projectVideo;
+      // this.setState({isOpen: false})
+      projectVideo.pause();
+      projectVideo.volume = 0;
+      projectVideo.controls = false;
 
+      // maintain scroll position on close...
+      // var tempScrollTop = window.scrollY;
+      // setTimeout(function(){
+      //   window.scrollTo(tempScrollTop, 0);
+      // }, 500);
   }
 
   componentWillUnmount() {
