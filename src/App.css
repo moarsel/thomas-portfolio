@@ -1,0 +1,55 @@
+
+.App {
+  text-align: center;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App-header {
+  background-color: #222;
+  background-image: url('images/thomas-image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: -1;
+  position: relative;
+}
+
+
+.card-name {
+  color: #FAFAFA;
+  font-size: 8vw;
+  line-height:1.2;
+  margin: 0;
+}
+
+.card-byline {
+  font-size: 3vw;
+  line-height:1.5;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-name {
+    font-size: 40px;
+  }
+  .card-byline {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .card-name {
+    font-size: 5.5rem;
+  }
+  .card-byline {
+    font-size: 30px;
+  }
+}
+
