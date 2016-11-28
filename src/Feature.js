@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import YouTube from 'react-youtube';
 import './Feature.css';
 
 class Feature extends Component {
@@ -13,19 +14,28 @@ class Feature extends Component {
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
 
-    let projectVideo = this.refs.projectVideo;
-    projectVideo.volume = 0;
-    projectVideo.controls = false;
+    // let projectVideo = this.refs.projectVideo;
+    // projectVideo.volume = 0;
+    // projectVideo.controls = false;
   };
 
   handleScroll(e) {
-    let projectVideo = this.refs.projectVideo;
+    let projectVideo = this.refs.projectVideo.internalPlayer;
     let featureBounds = this.refs.featureBlurb.getBoundingClientRect();
     let isVisible = (featureBounds.top + 200 < window.innerHeight) && (featureBounds.bottom - 540 > 0);
     let featureCenter = featureBounds.top - featureBounds.top / 2;
     featureCenter *= Math.sign(featureCenter);
     featureCenter = 1 - featureCenter / 150;
-    console.log(featureCenter);
+    // projectVideo.style.transform = "translateY: #{22+ featureCenter}px";
+    // console.log(featureCenter, `HSLA(20,20,#{featureCenter}, 1)`);
+    // console.log(`HSLA(20,20,${featureCenter * 100}, 1)`);
+
+    if (featureCenter > 0) {
+      // console.log(`RGBA(22,33, ${featureCenter * 100}, 1)`);
+      // document.body.style.backgroundColor = `HSLA(222,${featureCenter * 10}, 100, 1)`;
+    }
+    
+
 
     // Math.floor(Math.abs(x));
 
@@ -37,7 +47,7 @@ class Feature extends Component {
 
 
     if (isVisible && !this.state.isOpen) {
-      projectVideo.play();
+      projectVideo.playVideo();
     } else if (!isVisible && !this.state.isOpen){
       this.closeFeature();
     }
@@ -48,28 +58,33 @@ class Feature extends Component {
   }
 
   openFeature(){
-    let projectVideo = this.refs.projectVideo;
+    let projectVideo = this.refs.projectVideo.internalPlayer;
+    let videoContainer = this.refs.videoContainer;
     
     this.setState({isOpen: true});
-    projectVideo.pause();
-    projectVideo.volume = 1;
-    projectVideo.play();
-    projectVideo.currentTime = 0;
+    projectVideo.seekTo(0);
+    projectVideo.unMute();
+    projectVideo.setOption("controls", 1);
+
+    projectVideo.playVideo();
+    console.log(videoContainer, videoContainer.offsetTop)
 
     window.scroll({
-      top: projectVideo.offsetTop - 25,
+      top: videoContainer.offsetTop - 25,
       behavior: 'smooth'
     });
 
     setTimeout(function(){
-      projectVideo.controls = true;
+      // projectVideo.controls = true;
     }, 1200);
   }
 
   closeFeature(){
-      let projectVideo = this.refs.projectVideo;
+      let projectVideo = this.refs.projectVideo.internalPlayer;
+
+
       // this.setState({isOpen: false})
-      projectVideo.pause();
+      // projectVideo.pause();
       projectVideo.volume = 0;
       projectVideo.controls = false;
 
@@ -84,20 +99,44 @@ class Feature extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   };
 
+  onReady(event) {
+    let video = event.target;
+    video.playVideo();
+    video.mute();
+    video.controls = false;
+  }
+
   render() {
 
  
     let activeClass = this.state.isOpen ? 'projectOpen' : 'projectClosed';
+    const videoOpts = {
+      width: '100%',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1,
+        controls: this.state.isOpen ? 1 : 0,
+        showinfo: 0,
+        rel:0,
+        modestbranding: 1
+      }
+    }
 
 
     return (
       <div className={activeClass}>
         <div ref="featureBlurb" className="featureContainer">
-          <video ref="projectVideo" className="videoElement" onClick={this.handleClick} onCanPlay={this.videoCanPlay} src={this.props.video} poster={this.props.previewImage}>
-            Sorry, your browser doesn't support embedded videos, 
-            but don't worry, you can <a href={this.props.video} download>download it</a>
-            and watch it with your favorite video player!
-          </video>
+          
+          
+          <div className="videoElement" ref="videoContainer">
+            <YouTube
+            ref="projectVideo"
+            videoId={this.props.video}
+            opts={videoOpts}
+            onReady={this.onReady}
+            />
+          </div>
+
+
           <div className="feature" onClick={this.handleClick}>
             <div className="feature-text">
               <div className="feature-title">{this.props.title}</div>
