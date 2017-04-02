@@ -1,98 +1,127 @@
-import smoothScroll from 'smoothscroll-polyfill';
+import smoothScroll from "smoothscroll-polyfill";
 smoothScroll.polyfill();
+import { SocialIcon } from "react-social-icons";
 
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
-import './App.css';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import "./App.css";
+import content from "./content.json";
 
-import Feature from './Feature.js';
+import Feature from "./Feature.js";
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state = {activeFeature: -1};
-    
-    this.featuredContent = [
-      {
-        theme:"#0e2300",
-        video:"https://www.youtube.com/watch?v=JfmyXwpFLbc",
-        title:"Drawing Duncan Palmer",
-        category:"Short Film",
-        description: `Putent nostrud ut quo. Ignota pertinacia ex usu, ad elit interpretaris 
-        vim. Ei ius tation labore, vis ea senserit reprimique appellantur. Cum te iuvaret 
-        corrumpit maiestatis, ad vis erat epicurei oportere. Cu vel officiis consequuntur, no
-        simul nominavi prodesset vis, id his nibh aeterno. Eum ad pertinax constituam, sed ubique 
-        scripta signiferumque ei, adhuc tation facilisis an nec.` 
-      },
-      {
-        theme:"#0e2300",
-        video:"https://www.youtube.com/watch?v=wVjGmzqW4Lg",
-        title:"If you want to, you have to",
-        category:"Orchestra",
-        description: `Putent nostrud ut quo. Munere abhorreant usu te, ex per delenit delectus
-        salutatus, summo simul sea an. Ignota pertinacia ex usu, ad elit interpretaris vim. 
-        Ei ius tation labore, vis ea senserit reprimique appellantur. Cum te iuvaret corrumpit 
-        maiestatis, ad vis erat epicurei oportere. Cu vel officiis consequuntur, no simul 
-        nominavi prodesset vis, id his nibh aeterno. Eum ad pertinax constituam, sed ubique 
-        scripta signiferumque ei, adhuc tation facilisis an nec.` 
-      }
-    ]
+    this.state = { activeFeature: -1 };
+    this.featuredContent = content.content;
   }
 
-  toggleActive(index){
-    this.setState({activeFeature: index});
+  toggleActive(index) {
+    this.setState({ activeFeature: index });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let videoContainer = ReactDOM.findDOMNode(this.refs.activeFeature);
-    if(videoContainer && videoContainer.offsetTop && prevState !== this.state) {
+    let currentFeature = this.refs.activeFeature;
+    let videoContainer = ReactDOM.findDOMNode(currentFeature);
+
+    if (
+      videoContainer && videoContainer.offsetTop && prevState !== this.state
+    ) {
       window.scroll({
-        top: videoContainer.offsetTop - 25,
-        behavior: 'smooth'
+        top: videoContainer.offsetTop - 50,
+        behavior: "smooth"
       });
-    }    
+
+      document.body.style.transition = "all 2s";
+      document.body.style.backgroundColor = currentFeature.props.theme;
+    }
   }
 
-  renderFeature(feature, index){
+  renderFeature(feature, index) {
     const attrs = {
       key: index,
       theme: feature.theme,
-      video: feature.video,
+      embed: feature.embed,
       title: feature.title,
-      description: feature.description
-    }
+      description: feature.description,
+      category: feature.category
+    };
 
     let active = this.state.activeFeature === index;
 
-    if(active) {
+    if (active) {
       attrs.ref = "activeFeature";
     }
-    return (<Feature {...attrs} activeFeature={active} toggleActive={this.toggleActive.bind(this, index)}/>)
+    return (
+      <Feature
+        {...attrs}
+        activeFeature={active}
+        toggleActive={this.toggleActive.bind(this, index)}
+      />
+    );
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="App-header" />
+        <div className="intro-container">
           <header className="card-intro">
             <div>
-            <h2 className="card-name">Thomas Hoy</h2>
+              <h2 className="card-name">Thomas Hoy</h2>
             </div>
           </header>
+          <p className="card-byline">
+            {content.tagline}
+          </p>
+          <div className="social-icons-container">
+            <a
+              href="mailto:thomashoycomposer@gmail.com?Subject=Lets%20chat"
+              style={{
+                color: "#FFF",
+                fontSize: "22px",
+                backgroundColor: "#000",
+                margin: "0 1rem",
+                textDecoration: "none",
+                padding: "18px 25px"
+              }}
+            >
+              Let's talk
+            </a>
+
+            <SocialIcon
+              url="https://www.youtube.com/channel/UCzpKKyzHkFPtnDq58-x2qSA"
+            />
+            <SocialIcon url="https://soundcloud.com/thomas-hoy-composer/" />
+          </div>
         </div>
-        <p className="card-byline">
-          Lorem ipsum dolor sit amet, an vidit omittam vulputate ius. Velit denique accumsan ei qui, utinam admodum omnesque ne eum, an mel aperiam labores mandamus. Purto quidam cu sit, ex eam quando primis interesset.
-        </p>
-        {
-          this.featuredContent.map(
-            (feature, index) => {
-              return this.renderFeature(feature, index);
-            }
-          )
-        }
-        <p className="contact-me">
-          
-        </p>
+
+        <div
+          style={{
+            margin: "0 auto",
+            width: "60vw"
+          }}
+        >
+          <div
+            style={{
+              background: "#000",
+              padding: 1
+            }}
+          >
+            <h1 className="feature-title"> Recent Work </h1>
+          </div>
+          <iframe
+            width="100%"
+            height="450"
+            scrolling="no"
+            frameBorder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/176470392&amp;color=ff5500&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"
+          />
+        </div>
+        {this.featuredContent.map((feature, index) => {
+          return this.renderFeature(feature, index);
+        })}
+        <p className="contact-me" />
       </div>
     );
   }
