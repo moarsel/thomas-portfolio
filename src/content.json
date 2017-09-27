@@ -1,18 +1,38 @@
-{   "tagline": "Thomas Hoy is a Toronto-based media composer who works in film, theatre, dance and concert music. \n \n Equal parts classical composer and pop musician, Thomas strives to bring a classic elegance and a modern edge to every project.",
-    "content": [
-        {
-            "theme": "#5b5a5b",
-            "embed": "https://www.youtube.com/watch?v=JfmyXwpFLbc",
-            "title": "Drawing Duncan Palmer",
-            "category": "Short Film",
-            "description": "Putentnostrudutquo.Ignotapertinaciaexusu, adelitinterpretarisvim.Eiiustationlabore, viseasenseritreprimiqueappellantur.Cumteiuvaretcorrumpitmaiestatis, adviseratepicureioportere.Cuvelofficiisconsequuntur, nosimulnominaviprodessetvis, idhisnibhaeterno.Eumadpertinaxconstituam, sedubiquescriptasigniferumqueei, adhuctationfacilisisannec."
-        },
-        {
-            "theme": "#394f60",
-            "embed": "https://www.youtube.com/watch?v=wVjGmzqW4Lg",
-            "title": "If you want to, you have to",
-            "category": "Orchestra",
-            "description": "Putentnostrudutquo.Ignotapertinaciaexusu, adelitinterpretarisvim.Eiiustationlabore, viseasenseritreprimiqueappellantur.Cumteiuvaretcorrumpitmaiestatis, adviseratepicureioportere.Cuvelofficiisconsequuntur, nosimulnominaviprodessetvis, idhisnibhaeterno.Eumadpertinaxconstituam, sedubiquescriptasigniferumqueei, adhuctationfacilisisannec."
-        }
-    ]
+{
+  "tagline":
+    "Thomas Hoy is a Toronto-based media composer who works in film, theatre, dance and concert music. \n \n Equal parts classical composer and pop musician, Thomas strives to bring a classic elegance and a modern edge to every project.",
+  "content": [
+    {
+      "theme": "#f4b3d8",
+      "embed": "https://www.youtube.com/watch?v=56xfd8POz4c",
+      "title": "Don't Talk to Irene",
+      "category": "Comedy Feature"
+    },
+    {
+      "theme": "#4d4238",
+      "embed": "https://vimeo.com/223845717",
+      "title": "The Music of Acres",
+      "category": "Behind the Scenes"
+    },
+    {
+      "theme": "#354961",
+      "embed": "https://vimeo.com/148242729",
+      "title": "Drawing Duncan Palmer",
+      "category": "Short Film"
+    },
+    {
+      "theme": "#000000",
+      "embed": "https://vimeo.com/190366698",
+      "title": "Props Girl",
+      "category": "Short Film",
+      "description": ""
+    },
+    {
+      "theme": "#030066",
+      "embed": "https://www.youtube.com/watch?v=IRtoL6mBGKQ",
+      "title": "If you want to, you have to",
+      "category": "Chamber Music",
+      "description": ""
+    }
+  ]
 }

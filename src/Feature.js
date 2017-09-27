@@ -37,10 +37,17 @@ class Feature extends Component {
     if (prevProps.activeFeature !== this.props.activeFeature) {
       // volume must be state not inherited props
       const volume = this.props.activeFeature ? 1 : 0;
-      
+
       this.setState({ volume: volume });
       this.refs.projectVideo.player.seekTo(0);
       this.refs.projectVideo.player.setVolume(volume);
+
+      if (
+        this.refs.projectVideo.player.player &&
+        this.refs.projectVideo.player.player.unMute
+      ) {
+        this.refs.projectVideo.player.player.unMute();
+      }
     }
   }
 
@@ -54,6 +61,7 @@ class Feature extends Component {
         // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
         showinfo: 0,
+        mute: 1,
         rel: 0,
         modestbranding: 1
       }
@@ -77,8 +85,10 @@ class Feature extends Component {
               playing={this.props.activeFeature}
               controls={true}
               volume={this.state.volume}
+              muted={Boolean(this.state.volume)}
               youtubeConfig={videoOpts}
               soundcloudConfig={soundcloudOpts}
+              preload={true}
               width="100%"
               height="100%"
             />
@@ -89,11 +99,13 @@ class Feature extends Component {
               <div className="feature-category">{this.props.category}</div>
               <div className="feature-title">{this.props.title}</div>
             </div>
-            {this.props.activeFeature
-              ? <div className="feature-description">
-                  {this.props.description}
-                </div>
-              : ""}
+            {this.props.activeFeature ? (
+              <div className="feature-description">
+                {this.props.description}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </section>

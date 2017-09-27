@@ -1,18 +1,21 @@
 body {
   margin: 0;
   padding: 0;
-  background: #425644;
+  background: #24291c;
 }
 
-
-body, p, div, header {
-  font-size: 100%; 
+body,
+p,
+div,
+header {
+  font-size: 100%;
   line-height: 1.1;
-  font-family: 'Kameron', sans-serif;
-  color: #FAFAFA;
+  font-family: "Kameron", sans-serif;
+  color: #fafafa;
 }
 
-
-*, :after, :before {
-    box-sizing: border-box;
+*,
+:after,
+:before {
+  box-sizing: border-box;
 }

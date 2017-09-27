@@ -1,13 +1,12 @@
-
 .App {
   text-align: center;
   overflow: hidden;
-  font-family: 'Kameron', 'Open Sans', sans-serif;
+  font-family: "Kameron", Arial, sans-serif;
 }
 
 .App-header {
-  background-color: #222;
-  background-image: url('images/thomas-image.jpg');
+  background-color: #fff;
+  background-image: url("images/thomas-cover.jpg");
   background-size: cover;
   background-position: center;
   padding: 4rem;
@@ -16,15 +15,16 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
+  transition: 2s opacity ease-out;
 }
 
 .intro-container {
-    background: #FAFAFA;
-    width: 60vw;
-    margin: 2rem auto;
-    transform: translateY(-13rem);
-    padding: 3rem 0;
-    box-shadow: 0 4px 6px 0px RGBA(0,0,0,0.4);
+  background: linear-gradient(rgba(21, 21, 21, 0.7), #000);
+  width: 60vw;
+  margin: 2rem auto;
+  transform: translateY(-17rem);
+  padding: 3rem 0;
+  box-shadow: 0 4px 6px 0px RGBA(0, 0, 0, 0.4);
 }
 
 .social-icons-container {
@@ -32,21 +32,27 @@
 }
 
 .card-name {
-  color: #333;
+  color: #fafafa;
   font-size: 6vw;
-  line-height:1.2;
+  letter-spacing: -1px;
+  line-height: 1.2;
   margin: 0;
 }
 
 .card-byline {
-  color: #333;
+  color: #fafafa;
   font-size: 2.2vw;
-  line-height:1.5;
+  line-height: 1.5;
   width: 80%;
   margin: 0 auto;
   padding: 2rem;
   white-space: pre-line;
   text-align: left;
+}
+
+.soundcloud-container {
+  margin: -14rem auto 0;
+  width: 60vw;
 }
 
 @media only screen and (max-width: 750px) {
@@ -59,7 +65,11 @@
   }
 
   .intro-container {
-    width: 100vw;
+    width: 90vw;
+  }
+
+  .soundcloud-container {
+    width: 90vw;
   }
 }
 
